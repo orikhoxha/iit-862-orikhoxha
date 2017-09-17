@@ -2,18 +2,18 @@ var handAssessor = function(cardsArray){
 
 
 	var ranks = [ {"rank" : "two", "position" : 2},
-				  {"rank" : "three", "position" : 3},
-				  {"rank" : "four", "position" : 4},
-				  {"rank" : "five", "position" : 5},
-				  {"rank" : "six", "position" : 6},
-				  {"rank" : "seven", "position" : 7},
-				  {"rank" : "eight", "position" : 8},
-				  {"rank" : "nine", "position" : 9},
-				  {"rank" : "ten", "position" : 10},
-				  {"rank" : "jack", "position" : 11},
-				  {"rank" : "queen", "position" : 12},
-				  {"rank" : "king", "position" : 13},
-				  {"rank" : "ace", "position" : 14}
+		      {"rank" : "three", "position" : 3},
+		      {"rank" : "four", "position" : 4},
+		      {"rank" : "five", "position" : 5},
+		      {"rank" : "six", "position" : 6},
+		      {"rank" : "seven", "position" : 7},
+		      {"rank" : "eight", "position" : 8},
+		      {"rank" : "nine", "position" : 9},
+		      {"rank" : "ten", "position" : 10},
+		      {"rank" : "jack", "position" : 11},
+		      {"rank" : "queen", "position" : 12},
+		      {"rank" : "king", "position" : 13},
+		      {"rank" : "ace", "position" : 14}
 	];
 
 
@@ -56,7 +56,7 @@ var handAssessor = function(cardsArray){
 	/******* Helper Functions ******/
 
 
-	//Get rank from the hand
+	//Get ranks from the hand
 	var handRanks = cardsArray.map(function(card){
 		return card.rank;
 	});	
@@ -79,6 +79,7 @@ var handAssessor = function(cardsArray){
 			});
 
 			if(count > 1){
+				//Check if rank has already been processed
 				var rankPushed = ranksFoundOccurence.some(function(elem){
 					return elem.rank == rank.rank ? true : false;
 				});
@@ -215,7 +216,7 @@ var handAssessor = function(cardsArray){
 		if(containsPair(cardsArray)){
 			message += "pair";
 		}
-		return message === "" ? "Bust" : message;
+		return message === "" ? "Bust" : "Possible hands: " + message;
 	}
 
 	return matchingHands(cardsArray);
