@@ -2,8 +2,6 @@ var main = function (toDoObjects) {
     "use strict";
 
     var toDos = toDoObjects.map(function (toDo) {
-          // we'll just return the description
-          // of this toDoObject
           return toDo.description;
     });
 
