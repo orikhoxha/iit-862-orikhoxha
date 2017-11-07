@@ -4,8 +4,7 @@ var express = require("express"),
     // import the mongoose library
     mongoose = require("mongoose"),
     UsersController = require("./controllers/users_controller.js"),
-    RemindersController = require("./controllers/reminders_controller.js"),
-    HomeController = require("./controllers/home_controller.js");
+    RemindersController = require("./controllers/reminders_controller.js");
     app = express();
     var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
