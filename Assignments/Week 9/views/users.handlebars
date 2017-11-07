@@ -1,0 +1,92 @@
+{{> header}}
+		<div class="row col-sm-4">
+			<h2>Add a User</h2>
+			<div class="form-group row">
+		  		<label for="name-input" class="col-2 col-form-label">Name</label>
+			    <div class="col-10">
+			    	<input class="form-control" type="text" id="name-input">
+			    </div>
+		 	</div>
+			<div class="form-group row">
+			  <label for="email-input" class="col-2 col-form-label">Email</label>
+			  <div class="col-10">
+			    <input class="form-control" type="text" id="email-input">
+			  </div>
+			</div>
+			<div class="form-group row">
+		      <div class="col-10">
+		        <button type="submit" id="add-user-btn" class="btn btn-primary">Add User</button>
+		      </div>
+			</div>
+		</div>
+
+		<!--Table here -->
+		<div id="table-wrapper" class="row col-sm-8">
+			<table id="usersTable" class="table table-bordered table-striped">
+				<thead>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Reminders List</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</thead>
+				<tbody>
+					{{#each users}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>{{this.email}}</td>
+						<td><a href="/users/{{this._id}}/reminders">List</a></td>
+						<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" onclick='loadUser("{{this._id}}")' data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+						<td><p data-placement="top"  data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" onclick='confirmDelete("{{this._id}}")' data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+		   <div class="modal-dialog">
+			    <div class="modal-content">
+			        <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				        <h4 class="modal-title custom_align" id="Heading">Edit User</h4>
+			      	</div>
+			       	<div class="modal-body">
+			          <div class="form-group">
+			          	<label>Name:</label>
+			        	<input class="form-control " id="input-name"  type="text" placeholder="Name">
+			          </div>
+			          <div class="form-group">
+			          	<label>Email:</label>
+			        	<input class="form-control " id="input-email" type="text" placeholder="Email">
+			           </div>
+			      	</div>
+			        <div class="modal-footer">
+			        	<button type="button" id="btn-edit-user" class="btn btn-warning btn-lg" style="width: 40%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+			      	</div>
+			    </div>
+		    <!-- /.modal-content --> 
+		  	</div>
+      <!-- /.modal-dialog --> 
+    	</div>
+    
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+	    <div class="modal-content">
+	        <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+		        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+	        </div>
+	        <div class="modal-body">
+	       		<div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+	      	</div>
+	        <div class="modal-footer">
+	        	<button type="button" id="btn-yes-remove" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+	        	<button type="button" id="btn-no-remove" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+	      	</div>
+        </div>
+    <!-- /.modal-content --> 
+  	   </div>
+      <!-- /.modal-dialog --> 
+    </div>
+{{> footer}}
+<script type="text/javascript" src="/js/user.js"></script>

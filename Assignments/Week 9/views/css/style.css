@@ -1,0 +1,23 @@
+.container > .row{
+	margin-top:20px;
+}
+
+header{
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+
+.form-control{
+	width:80%;
+}
+
+#update-empty{
+	display: none;
+}
+
+
+.add{
+	margin-top:40px;
+}
